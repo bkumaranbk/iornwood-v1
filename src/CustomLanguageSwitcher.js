@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-google-multi-lang';
 
 const ArrowIcon = ({ isOpen }) => (
@@ -14,29 +14,36 @@ const ArrowIcon = ({ isOpen }) => (
 );
 
 const CustomLanguageSwitcher = React.memo(() => {
-  const { setLanguage } = useTranslation();
+  const { setLanguage, language } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const [currentLang, setCurrentLang] = useState(language || 'EN');
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleLanguageChange = (lang) => {
     setLanguage(lang);
+    setCurrentLang(lang.toUpperCase());
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    // Sync current language with the translation hook
+    setCurrentLang(language.toUpperCase());
+  }, [language]);
+
   return (
-    <div className="relative">
+    <div className="">
       <button
         onClick={toggleDropdown}
         className="top-6 right-6 bg-gray-800 text-white px-4 py-2 rounded-md focus:outline-none flex items-center"
       >
-        <span className="mr-2">EN</span>
+        <span className="mr-2">{currentLang}</span>
         <ArrowIcon isOpen={isOpen} />
       </button>
 
       {isOpen && (
         <div
-          className="origin-top-right absolute right-6 top-12 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+          className="origin-top-right absolute right-6 top-20 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
         >
           <div className="py-1">
             <button

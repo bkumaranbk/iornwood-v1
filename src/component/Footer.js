@@ -111,4 +111,4 @@ const Footer = () => {
   );
 };
 
-export default withTranslation(Footer);
+export default (Footer);
