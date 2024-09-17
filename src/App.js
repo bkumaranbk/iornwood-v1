@@ -12,7 +12,6 @@ import Rentel from './page/Rentel';
 import Spa from './page/Spa';
 import Skilift from './page/Skilift';
 import Card from './component/Card';
-import CustomLanguageSwitcher from './CustomLanguageSwitcher';
 
 function App() {
   const [data, setData] = useState(null);
@@ -58,27 +57,23 @@ function App() {
 
   return (
     <Router>
-        
-        <AppBar />
-        <CustomLanguageSwitcher />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Restaurants" element={<Card title="Restaurants" cards={restaurantData} />} />
-          <Route path="/Happy-Hours" element={<Card title="Happy Hours" cards={happyData} />} />
-          <Route path="/Food-Shops" element={<Card title="Food Shops" cards={foodData} />} />
-          <Route path="/Rentals" element={<Card title="Rentals" cards={rentelData} />} />
-          <Route path="/Spa" element={<Card title="Spa" cards={spaData} />} />
-          <Route path="/SkiLifts" element={<Card title="Ski Lifts" cards={skiliftData} />} />
-          <Route path="place/:_id" element={<Restaurant />} />
-          <Route path="/Happy" element={<Happy/>} />
-          <Route path="/Food" element={<Food />} />
-          <Route path="/Rentel" element={<Rentel />} />
-          <Route path="/Spa-view" element={<Spa />} />
-          <Route path="/Skilift" element={<Skilift />} />
-        </Routes>
-        
-        <Footer />
+      <AppBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Restaurants" element={<Card title="Restaurants" cards={restaurantData} />} />
+        <Route path="/Happy-Hours" element={<Card title="Happy Hours" cards={happyData} />} />
+        <Route path="/Food-Shops" element={<Card title="Food Shops" cards={foodData} />} />
+        <Route path="/Rentals" element={<Card title="Rentals" cards={rentelData} />} />
+        <Route path="/Spa" element={<Card title="Spa" cards={spaData} />} />
+        <Route path="/SkiLifts" element={<Card title="Ski Lifts" cards={skiliftData} />} />
+        <Route path="place/:_id" element={<Restaurant />} />
+        <Route path="/Happy" element={<Happy />} />
+        <Route path="/Food" element={<Food />} />
+        <Route path="/Rentel" element={<Rentel />} />
+        <Route path="/Spa-view" element={<Spa />} />
+        <Route path="/Skilift" element={<Skilift />} />
+      </Routes>
+      <Footer />
     </Router>
   );
 }

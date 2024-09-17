@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 import { withTranslation } from 'react-google-multi-lang';
+import CustomLanguageSwitcher from './../CustomLanguageSwitcher';
 
 
 const AppBar = () => {
@@ -77,6 +79,10 @@ const AppBar = () => {
           </div>
         </div>
 
+        <span className="xl:hidden flex items-center px-2 py-2">
+          <CustomLanguageSwitcher />
+        </span>
+        
         {/* Burger Menu Button */}
         <button
           onClick={menuClicked}
@@ -97,7 +103,7 @@ const AppBar = () => {
             />
           </svg>
         </button>
-
+       
         {/* Navigation Links (desktop view) */}
         <div className="hidden xl:flex space-x-8">
           <Link to="/" onClick={handleMenuItemClick} className="menu">
@@ -127,6 +133,7 @@ const AppBar = () => {
           <Link to="https://www.livigno.eu/eventi" target="_blank" onClick={handleMenuItemClick} className="menu">
             Events
           </Link>
+          <CustomLanguageSwitcher />
         </div>
       </div>
     </nav>
